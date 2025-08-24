@@ -8,4 +8,29 @@ use Illuminate\Database\Eloquent\Model;
 class Book extends Model
 {
     use HasFactory;
+
+    protected $table = 'books';
+
+    protected $fillable = [
+        'title',
+        'description',
+        'published_at',
+        'writer_id'
+    ];
+
+    public function writer()
+    {
+        return $this->belongsTo(Writer::class, 'writer_id');
+    }
+
+    public function genres()
+    {
+        return $this->belongsToMany(Genre::class, 'genre_books');
+    }
+
+    public function likes()
+    {
+        return $this->hasMany(LikeBook::class, 'book_id');
+    }
+
 }

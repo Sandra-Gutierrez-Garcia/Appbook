@@ -13,11 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('writers', function (Blueprint $table) {
+        Schema::create('genre_books', function (Blueprint $table) {
             $table->id();
-            $table->string('username');
-            $table->string('description');
-            $table->foreignId('user_id')->constrained('users');
+            $table->foreignId('book_id')->constrained('books');
+            $table->foreignId('genre_id')->constrained('genres');
             $table->timestamps();
         });
     }
@@ -29,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('writers');
+        Schema::dropIfExists('genre_books');
     }
 };
