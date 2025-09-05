@@ -18,19 +18,29 @@ class RolesSeeder extends Seeder
     {
         // create permissions
         $permissionsforReeder = [
+            //App permissions
             'view books',
             'like books',
-            'like authors'
+            'like authors',
+            'view authors',
+
+            //reader profile permissions
+            'view profile',
+            'edit profile',
+            'delete profile'
         ];
 
         $permissionsforWriter = [
+          //Book permissions
             'create books',
             'edit books',
             'delete books',
-            'create authors',
-            'edit authors',
-            'delete authors'
+
+            //writer profile permissions
+            'edit writer profile',
+            'delete writer profile',
         ];
+       
         //create for roles
         $writer = Role::create(['name' => 'writer']);
         $reader = Role::create(['name' => 'reader']);
