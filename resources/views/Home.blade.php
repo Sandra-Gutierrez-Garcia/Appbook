@@ -7,28 +7,11 @@
     @vite('resources/css/app.css')
 </head>
 <body>
-    <nav class="bg-gray-100 p-4 shadow-lg">
-        <div class="container mx-auto flex items-center justify-between">
-
-            <!-- Navigation links -->
-            <div class="flex items-center space-x-8">
-                <a href="#" class="text-black hover:text-violet-600">Home</a>
-                <a href="#" class="text-black hover:text-violet-600">Writer</a>
-                <a href="#" class="text-black hover:text-violet-600">Books</a>
-            </div>
-
-            <!-- Name for app or logo -->
-            <div class="flex items-center space-x-4">
-                <span class="text-2xl font-light tracking-wide text-gray-700">Library<span class="text-violet-600 font-medium">Roses</span></span>
-            </div>
-
-            <!-- register and login -->
-            <div class="flex items-center space-x-4">
-                <a href="#" class="text-black hover:text-violet-600">Login</a>
-                <a href="#" class="text-black hover:text-violet-600">Register</a>
-            </div>
-        </div>
-    </nav>
+    <x-nav-blade 
+        :navLinks="[['name' => 'Home', 'route' => '/'], ['name' => 'Books', 'route' => '/books'], ['name' => 'About', 'route' => '/about']]"
+        :appName="'AppBook'"
+        :accentColor="'violet'"
+    />
     <!-- banner -->
     <div class="bg-gradient-to-b from-violet-50 to-violet-100 min-h-[16rem] flex items-center justify-center px-8 mt-8">
         <div class="container mx-auto flex items-center justify-center gap-12">
