@@ -6,18 +6,14 @@ use Illuminate\View\Component;
 
 class NavBlade extends Component
 {
-    protected $navLinks;
     protected $appName;
-    protected $accentColor;
 
     /**
      * Create a new component instance.
      */
-    public function __construct(array $navLinks, string $appName, string $accentColor)
+    public function __construct(string $appName)
     {
-        $this->navLinks = $navLinks;
         $this->appName = $appName;
-        $this->accentColor = $accentColor;
     }
 
     /**
@@ -28,9 +24,7 @@ class NavBlade extends Component
     public function render()
     {
         return view('components.nav-blade')->with([
-            'navLinks' => $this->navLinks,
             'appName' => $this->appName,
-            'accentColor' => $this->accentColor
         ]);
     }
 }

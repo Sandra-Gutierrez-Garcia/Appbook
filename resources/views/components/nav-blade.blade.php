@@ -3,9 +3,9 @@
         <div class="container mx-auto flex items-center justify-between">
             <!-- Navigation links -->
             <div class="flex items-center space-x-8">
-                @foreach ($navLinks as $link)
-                    <a href="{{ $link['route'] }}" class="text-black hover:text-{{ $accentColor }}-600">{{ $link['name'] }}</a>
-                @endforeach
+                <a href="/home" class="text-black hover:text-violet-600">Home</a>
+                <a href="/books" class="text-black hover:text-violet-600">Books</a>
+                <a href="/writer" class="text-black hover:text-violet-600">Writer</a>
             </div>
 
             <!-- Name for app or logo -->
@@ -15,8 +15,8 @@
 
             <!-- register and login -->
             <div class="flex items-center space-x-4">
-                <a href="/login" class="text-black hover:text-{{ $accentColor }}-600">Login</a>
-                <a href="/register" class="text-black hover:text-{{ $accentColor }}-600">Register</a>
+                <a href="/login" class="text-black hover:text-violet-600">Login</a>
+                <a href="/register" class="text-black hover:text-violet-600">Register</a>
             </div>
         </div>
     </nav>

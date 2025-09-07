@@ -8,12 +8,12 @@ use App\Http\Requests\UserRequest;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 
-class RegisterController extends Controller
+class AuthController extends Controller
 {
     // Métodos de Registro
     public function create()
     {
-        return view('users.register');
+        return view('/register');
     }
 
     public function store(UserRequest $request)
@@ -35,7 +35,7 @@ class RegisterController extends Controller
     // Métodos de Login
     public function showLogin()
     {
-        return view('users.login');
+        return view('/login');
     }
 
     public function login(UserRequest $request)
@@ -44,7 +44,7 @@ class RegisterController extends Controller
 
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-            return redirect()->intended('/books');
+            return redirect()->intended('/home');
         }
 
         return back()->withErrors([

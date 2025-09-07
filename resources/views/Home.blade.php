@@ -3,14 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prueba de Tailwind CSS</title>
+    <title>Home</title>
     @vite('resources/css/app.css')
 </head>
 <body>
     <x-nav-blade 
-        :navLinks="[['name' => 'Home', 'route' => '/'], ['name' => 'Books', 'route' => '/books'], ['name' => 'About', 'route' => '/about']]"
         :appName="'AppBook'"
-        :accentColor="'violet'"
     />
     <!-- banner -->
     <div class="bg-gradient-to-b from-violet-50 to-violet-100 min-h-[16rem] flex items-center justify-center px-8 mt-8">
