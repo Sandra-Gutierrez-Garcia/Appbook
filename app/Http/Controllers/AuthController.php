@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
-    // Métodos de Registro
+    // Registration Methods
     public function create()
     {
         return view('/register');
@@ -25,14 +25,14 @@ class AuthController extends Controller
             $user = User::create($validated);
             $user->assignRole('reader');
 
-            return redirect()->route('login')->with('success', 'Registro exitoso. Por favor, inicia sesión.');
+            return redirect('/login')->with('success', 'Registration successful. Please log in.');
 
         } catch (\Exception $e) {
-            return redirect()->back()->withErrors(['error' => 'Error al registrar usuario.']);
+            return redirect()->back()->withErrors(['error' => 'Error registering user.']);
         }
     }
 
-    // Métodos de Login
+    // Login Methods
     public function showLogin()
     {
         return view('/login');
@@ -48,7 +48,7 @@ class AuthController extends Controller
         }
 
         return back()->withErrors([
-            'email' => 'Las credenciales no son correctas.'
+            'email' => 'These credentials do not match our records.'
         ]);
     }
 
