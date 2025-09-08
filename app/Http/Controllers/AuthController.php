@@ -40,16 +40,21 @@ class AuthController extends Controller
 
     public function login(UserRequest $request)
     {
-        $credentials = $request->validated();
+        try {
+            $credentials = $request->validated();
 
-        if (Auth::attempt($credentials)) {
-            $request->session()->regenerate();
-            return redirect()->intended('/home');
+            if (Auth::attempt($credentials)) {
+                $request->session()->regenerate();
+                return redirect()->intended('/users/' . Auth::id());
+            }
+
+            return redirect()->back()
+                ->withInput($request->only('email'))
+                ->withErrors(['email' => 'These credentials do not match our records.']);
+
+        } catch (\Exception $e) {
+            return redirect()->back()->withErrors(['error' => 'Error during login.']);
         }
-
-        return back()->withErrors([
-            'email' => 'These credentials do not match our records.'
-        ]);
     }
 
     public function logout(Request $request)

@@ -8,15 +8,7 @@ USE App\Http\Requests\UserRequest;
 
 class UserController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
+   
     /**
      * Display the specified resource.
      *
@@ -26,6 +18,8 @@ class UserController extends Controller
     public function show($id)
     {
         //
+        $user = User::findOrFail($id);
+        return view('users.show', compact('user'));
     }
 
     /**

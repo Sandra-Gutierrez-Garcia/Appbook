@@ -42,16 +42,16 @@ class RolesSeeder extends Seeder
         ];
        
         //create for roles
-        $writer = Role::create(['name' => 'writer']);
-        $reader = Role::create(['name' => 'reader']);
+        $writer = Role::firstOrCreate(['name' => 'writer']);
+        $reader = Role::firstOrCreate(['name' => 'reader']);
         // create roles and permission
 
         foreach ($permissionsforReeder as $permission) {
-            Permission::create(['name' => $permission]);
+            Permission::firstOrCreate(['name' => $permission]);
         }
 
         foreach ($permissionsforWriter as $permission) {
-            Permission::create(['name' => $permission]);
+            Permission::firstOrCreate(['name' => $permission]);
         }
 
         $reader->givePermissionTo($permissionsforReeder);
