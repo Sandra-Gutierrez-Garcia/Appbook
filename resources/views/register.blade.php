@@ -32,8 +32,15 @@
                     </div>
                     <div class="mb-4">
                         <label for="email" class="block text-gray-700 font-semibold mb-2">Email</label>
-                        <input type="email" id="email" name="email" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-violet-500 @error('email') border-red-500 @enderror" value="{{ old('email') }}" required>
+                        <input type="email" id="email" name="email" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focuçs:ring-violet-500 @error('email') border-red-500 @enderror" value="{{ old('email') }}" required>
                         @error('email')
+                            <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                        @enderror
+                    </div>
+                    <div class="m-b-4">
+                        <label for="birthday_date" class="block text-gray-700 font-semibold mb-2">Birthday Date</label>
+                        <input type="date" id="birthday_date" name="birthday_date" class="  w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-violet-500 @error('birthday_date') border-red-500 @enderror" value="{{ old('birthday_date') }}">
+                        @error('birthday_date')
                             <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
                         @enderror
                     </div>

@@ -21,6 +21,7 @@ class TestUserSeeder extends Seeder
             [
                 'name' => 'Usuario Test',
                 'password' => Hash::make('password123'),
+                'birthday_date' => '1990-01-01',
             ]
         );
     }
