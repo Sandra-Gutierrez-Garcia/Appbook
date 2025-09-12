@@ -16,7 +16,7 @@ class TestUserSeeder extends Seeder
      */
     public function run()
     {
-        User::firstOrCreate(
+        $user = User::firstOrCreate(
             ['email' => 'test@appbook.com'],
             [
                 'name' => 'Usuario Test',
@@ -24,5 +24,7 @@ class TestUserSeeder extends Seeder
                 'birthday_date' => '1990-01-01',
             ]
         );
+        
+        $user->assignRole('reader');
     }
 }
