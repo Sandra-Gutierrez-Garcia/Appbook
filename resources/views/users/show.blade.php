@@ -32,14 +32,22 @@
                 <h3 class="text-xl font-semibold text-gray-800">General Information</h3>
                 <p class="text-gray-700"><span class="font-semibold">Name:</span> {{ $user->name }}</p>
                 <p class="text-gray-700"><span class="font-semibold">Email:</span> {{ $user->email }}</p>
-                <p class="text-gray-700"><span class="font-semibold">Role:</span> {{ $user->roles->pluck('name')->first() ?? 'N/A' }}</p>
+                <p class="text-gray-700"><span class="font-semibold">Role:</span> {{ $user->roles->pluck('name')->implode(', ')}}</p>
             </div>
             <div class="space-y-3 border p-4 rounded-lg bg-gray-50">
                 <h3 class="text-xl font-semibold text-gray-800">Additional Details</h3>
-                <p class="text-gray-700"><span class="font-semibold">Birthday Date:</span> {{ optional($user->birthday_date)->format('F j, Y') ?? 'N/A' }}</p>
-                <p class="text-gray-700"><span class="font-semibold">Member Since:</span> {{ optional($user->created_at)->format('F j, Y') ?? 'N/A' }}</p>
+                <p class="text-gray-700"><span class="font-semibold">Birthday Date:</span> {{ $user->birthday_date->format('Y-m-d') ?? 'N/A' }}</p>
+                <p class="text-gray-700"><span class="font-semibold">Member Since:</span> {{ $user->created_at->format('Y-m-d') ?? 'N/A' }}</p>
             </div>
         </div>
+        <hr class="border-t border-gray-300 my-6">
+
+        <div class="justify-between">
+            <a href="#" class="hover:bg-violet-200 p-2 rounded-md mt-4 ">Edit Profile</a>
+            <a href="#" class="hover:bg-violet-200 p-2 rounded-md mt-4">Create Author</a>
+            <a href="#" class="hover:bg-red-200 p-2 rounded-md mt-4">Delete Account</a>
+        </div>
+    </div>
 </section>
 </body>
 </html>
