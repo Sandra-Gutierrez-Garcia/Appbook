@@ -27,5 +27,7 @@ Route::post('/login', [AuthController::class, 'login']);
 //Routes User
 Route::middleware(['auth'])->group(function () {
     Route::get('/users/{id}', [UserController::class, 'show']);
-
+    Route::get('/users/{id}/edit', [UserController::class, 'edit']);
+    Route::post('/users/{id}/update', [UserController::class, 'update']);
+    Route::post('/users/{id}/delete', [UserController::class, 'destroy']);
 });

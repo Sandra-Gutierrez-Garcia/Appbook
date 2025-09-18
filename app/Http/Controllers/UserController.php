@@ -31,6 +31,8 @@ class UserController extends Controller
     public function edit($id)
     {
         //
+        $user = User::findOrFail($id);
+        return view('users/edit', compact('user'));
     }
 
     /**
@@ -40,9 +42,16 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UserRequest $request, $id)
     {
-        //
+        $user = User::findOrFail($id);
+
+        try {
+            $user->update($request->validated());
+            return redirect()->route('users.show', $user->id)->with('success', 'User updated successfully.');
+        } catch (\Exception $e) {
+            return redirect()->back()->withErrors(['error' => 'Failed to update user.']);
+        }
     }
 
     /**
