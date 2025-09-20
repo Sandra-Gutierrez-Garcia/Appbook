@@ -48,7 +48,7 @@ class UserController extends Controller
 
         try {
             $user->update($request->validated());
-            return redirect()->route('users.show', $user->id)->with('success', 'User updated successfully.');
+            return redirect("/users/{$user->id}")->with('success', 'User updated successfully.');
         } catch (\Exception $e) {
             return redirect()->back()->withErrors(['error' => 'Failed to update user.']);
         }

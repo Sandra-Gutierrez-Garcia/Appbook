@@ -37,6 +37,13 @@ class UserRequest extends FormRequest
                 'password' => 'required|string',
             ];
         }
+            elseif($this->is('users/*/update')) {
+                return [
+                    'name' => 'required|string|max:255',
+                    'email' => 'required|email|unique:users,email,'.$this->route('id'),
+                    'birthday_date' => 'nullable|date',
+                ];
+            }
 
         return []; // Retorno por defecto
     }

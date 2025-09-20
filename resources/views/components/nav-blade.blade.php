@@ -3,7 +3,7 @@
         <div class="container mx-auto flex items-center justify-between">
             <!-- Navigation links -->
             <div class="flex items-center space-x-8">
-                <a href="/home" class="text-black hover:text-violet-600">Home</a>
+                <a href="/" class="text-black hover:text-violet-600">Home</a>
                 <a href="/books" class="text-black hover:text-violet-600">Books</a>
                 <a href="/writer" class="text-black hover:text-violet-600">Writer</a>
             </div>

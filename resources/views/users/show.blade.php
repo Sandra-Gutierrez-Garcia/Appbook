@@ -10,6 +10,13 @@
     <x-nav-blade
         :appName="'AppBook'"
     />
+    @if (session('success'))
+        <div class="container mx-auto px-4 mt-4">
+            <div class="max-w-md mx-auto bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative" role="alert">
+                <span class="block sm:inline">{{ session('success') }}</span>
+            </div>
+        </div>
+    @endif
     <section class="flex justify-justify-around p-4">
 
     <aside class="container max-h-full w-[400px] rounded-lg p-8 mt-8 border-r-2 border-gray-400">
@@ -27,7 +34,7 @@
     <div class="flex-1 container mx-auto p-8 mt-8 ml-14 mr-14 border-2 border-gray-200 rounded-lg shadow bg-white">
         <h2 class="text-2xl font-bold mb-4 text-gray-800">User Information</h2>
         <hr class="border-t border-gray-300 mb-4">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="flex flex-col md:flex-row md:space-x-6 space-y-6 md:space-y-0">
             <div class="space-y-3 border p-4 rounded-lg bg-gray-50">
                 <h3 class="text-xl font-semibold text-gray-800">General Information</h3>
                 <p class="text-gray-700"><span class="font-semibold">Name:</span> {{ $user->name }}</p>
