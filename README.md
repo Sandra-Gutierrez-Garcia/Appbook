@@ -1,66 +1,132 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# ✈️ SkyImpact: Air Quality & Flight Impact Visualizer
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## 📄 Description
+SkyImpact is a web application designed to visualize the estimated impact of air traffic on air quality and public health.
 
-## About Laravel
+Although the original goal was to build a fully interactive system that calculates pollution levels based on customizable parameters (monthly flight volume, route types, fuel consumption, etc.), this version focuses on two main visual components:
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+- 🌍 A map of Spanish airports showing detailed gas emission information
+- 🛫 A flight map displaying departures and arrivals between selected airports
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+The project integrates an Angular 20 frontend with a Laravel 12 backend API, both running on a local environment due to deployment limitations.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## 🛠️ Tech Stack
 
-## Learning Laravel
+### Frontend
+- **Angular 20** - Frontend framework
+- **Mapbox** & **Globe gl** for map visualization
+- **Angular Material** for UI styling
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### Backend
+- **Laravel 12** (PHP)
+- **REST API** endpoints connecting to flight and emission data
+- **Composer** for dependency management
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+### Environment
+Localhost setup with Node.js, npm, and PHP installed
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## 📋 Requirements
+To run the project locally, make sure you have:
 
-## Laravel Sponsors
+- **Node.js** and **npm** installed → [https://nodejs.org](https://nodejs.org)
+- **PHP** (≥8.2) and **Composer** installed → [https://getcomposer.org](https://getcomposer.org)
+- **Angular CLI** globally installed:
+  ```bash
+  npm install -g @angular/cli
+ ```
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+## 🛠️ Installation
 
-### Premium Partners
+✔️ Step-by-step setup
+1️⃣ Clone the repository
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+```bash
+git clone https://github.com/Sandra-Gutierrez-Garcia/hackaton_backend_equipo5.git
+```
 
-## Contributing
+2️⃣ Navigate into the project folder
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+3️⃣ Install Angular dependencies
 
-## Code of Conduct
+```bash
+cd SkyImpact-front
+```
+```bash
+npm install
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+4️⃣ Install Laravel dependencies
+```bash
+cd ..laravel
+```
+```bash
+composer install
+```
 
-## Security Vulnerabilities
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+### ⚙️ Environment Configuration
 
-## License
+# 🔧 Frontend (Angular)
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+1️⃣ Rename the example environment file:
+
+mv src/environments/environment.example.ts src/environments/environment.ts
+
+
+2️⃣ Edit the file to include your local API endpoint:
+```bash
+// src/environments/environment.ts
+export const environment = {
+  production: false,
+  apiUrl: 'http://localhost:8000/api'
+};
+```
+
+# 🔧 Backend (Laravel)
+
+1️⃣ Copy the environment template:
+
+```bash
+cp .env.example .env
+```
+
+
+2️⃣ Generate a Laravel app key:
+```bash
+php artisan key:generate
+```
+
+3️⃣ Update .env with your local configuration (database, ports, etc.)
+
+## ▶️ Running the Application
+
+🖥️ Run the Laravel API
+
+From the backend directory:
+```bash
+php artisan serve
+```
+
+Your backend will run on http://localhost:8000
+
+🌐 Run the Angular frontend
+
+From the frontend directory:
+```bash
+ng serve
+```
+
+Open your browser at http://localhost:4200
+
+The Angular app will fetch data from your local Laravel API.
+
+## ✨ Summary
+
+**Main Focus:** Interactive visualization of flight emissions and air routes
+
+**Region Covered:** Spain
+
+**Environment:** Local (not deployed yet)
+
+## 📚 Authors
+Developed by junior front end developers team as part of **Hackató Saló de l’Ocupació** focusing on team programming between front and back.
