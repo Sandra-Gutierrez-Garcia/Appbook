@@ -20,7 +20,7 @@ class TestUserSeeder extends Seeder
             ['email' => 'test@appbook.com'],
             [
                 'name' => 'Usuario Test',
-                'password' => Hash::make('password123'),
+                'password' => Hash::make('Test@1234'),
                 'birthday_date' => '1990-01-01',
             ]
         );
