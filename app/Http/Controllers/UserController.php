@@ -20,7 +20,7 @@ class UserController extends Controller
     {
         //
         $user = User::findOrFail($id);
-        return view('users/edit', compact('user'));
+        return view('users.edit', compact('user'));
     }
 
     public function update(UserRequest $request, $id)
@@ -41,6 +41,7 @@ class UserController extends Controller
         try{
             $user= User::find($id);
             $user->delete();
+            return redirect('/') ->with('success','User deleted');
         }catch(\Exception $e){
             return redirect()->back()->withErrors(['error' => 'Error destroying the account']);
         }
