@@ -28,7 +28,8 @@ class UserRequest extends FormRequest
                 'name' => 'required|string|max:255',
                 'email' => 'required|email|unique:users,email',
                 'password' => 'required|string|min:6|confirmed',
-                'birthday_date' => 'nullable|date',
+                'birthday_date' => 'required|date',
+
             ];
             
         } elseif($this->is('login')) {

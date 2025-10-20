@@ -8,13 +8,7 @@ USE App\Http\Requests\UserRequest;
 
 class UserController extends Controller
 {
-   
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function show($id)
     {
         //
@@ -22,26 +16,13 @@ class UserController extends Controller
         return view('users.show', compact('user'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
         //
         $user = User::findOrFail($id);
-        return view('users/edit', compact('user'));
+        return view('users.edit', compact('user'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(UserRequest $request, $id)
     {
         $user = User::findOrFail($id);
@@ -54,14 +35,15 @@ class UserController extends Controller
         }
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
         //
+        try{
+            $user= User::find($id);
+            $user->delete();
+            return redirect('/') ->with('success','User deleted');
+        }catch(\Exception $e){
+            return redirect()->back()->withErrors(['error' => 'Error destroying the account']);
+        }
     }
 }

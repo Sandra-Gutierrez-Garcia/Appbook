@@ -52,7 +52,10 @@
         <div class="justify-between">
             <a href="/users/{{ $user->id }}/edit" class="hover:bg-violet-200 p-2 rounded-md mt-4 ">Edit Profile</a>
             <a href="#" class="hover:bg-violet-200 p-2 rounded-md mt-4">Create Author</a>
-            <a href="#" class="hover:bg-red-200 p-2 rounded-md mt-4">Delete Account</a>
+            <form action ='/users/{{ $user->id}}/delete' method='post' class="inline">
+            @csrf
+                <button type='submit' class="hover:bg-red-200 p-2 rounded-md mt-4">Delete Account</button>
+            </form>
         </div>
     </div>
 </section>
