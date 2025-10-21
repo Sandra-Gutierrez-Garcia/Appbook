@@ -53,4 +53,15 @@ class UserRequest extends FormRequest
 
         return []; // Retorno por defecto
     }
+
+    public function messages()
+    {
+        return [
+            'password.required'=>'The password is required.',
+            'password.min'=>'The password must be at least 8 characters.',
+            'password.regex'=>'It is required letter uppercase, lowercase and special character.',
+            'birthday_date.required'=>'The birthday date is required.',
+            'birthday_date.date'=>'The birthday date must be a valid date.',
+        ];
+    }
 }

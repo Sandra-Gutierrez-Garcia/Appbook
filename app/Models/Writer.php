@@ -12,13 +12,17 @@ class Writer extends Model
     protected $table = 'writers';
 
     protected $fillable = [
-        'name',
-        'bio'
+        'username',
+        'bio',
+        'user_id'
     ];
 
     public function books()
     {
         return $this->hasMany(Book::class, 'writer_id');
+    }
+    public function user(){
+        return $this->belongsTo(User::class, 'user_id');
     }
 
 
