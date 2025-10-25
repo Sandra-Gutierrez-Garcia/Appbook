@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('writers', function (Blueprint $table) {
             $table->id();
             $table->string('username')->unique();
-            $table->string('description');
+            $table->string('bio')->nullable();
             $table->foreignId('user_id')->constrained('users');
             $table->timestamps();
         });

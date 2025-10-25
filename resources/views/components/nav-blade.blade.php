@@ -5,7 +5,7 @@
             <div class="flex items-center space-x-8">
                 <a href="/" class="text-black hover:text-violet-600">Home</a>
                 <a href="/books" class="text-black hover:text-violet-600">Books</a>
-                <a href="/writer" class="text-black hover:text-violet-600">Writer</a>
+                <a href="/writers" class="text-black hover:text-violet-600">Writer</a>
             </div>
 
             <!-- Name for app or logo -->
