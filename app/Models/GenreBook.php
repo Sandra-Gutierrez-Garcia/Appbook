@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Genre_Book extends Model
+class GenreBook extends Model
 {
     use HasFactory;
 
@@ -14,6 +14,11 @@ class Genre_Book extends Model
     protected $fillable = [
         'genre_id',
         'book_id'
+    ];
+
+    protected $casts = [
+        'genre_id' => 'integer',
+        'book_id' => 'integer',
     ];
 
     public function genre()

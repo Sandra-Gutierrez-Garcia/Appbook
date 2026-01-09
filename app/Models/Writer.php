@@ -16,6 +16,11 @@ class Writer extends Model
         'bio'
     ];
 
+    protected $casts = [
+        'bio' => 'text',
+        'name' => 'string',
+    ];
+
     public function books()
     {
         return $this->hasMany(Book::class, 'writer_id');

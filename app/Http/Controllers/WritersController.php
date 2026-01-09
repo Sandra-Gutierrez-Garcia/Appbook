@@ -14,7 +14,7 @@ class WritersController extends Controller
      */
     public function index()
     {
-        //
+        return Writers::all();
     }
 
     /**
@@ -24,7 +24,7 @@ class WritersController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**

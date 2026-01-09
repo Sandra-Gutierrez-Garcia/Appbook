@@ -17,6 +17,12 @@ class LikeBook extends Model
         'liked_at'
     ];
 
+    protected $casts = [
+        'user_id' => 'integer',
+        'book_id' => 'integer',
+        'liked_at' => 'datetime',
+    ];
+
     public function user()
     {
         return $this->belongsTo(User::class, 'user_id');
