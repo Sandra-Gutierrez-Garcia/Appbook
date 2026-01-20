@@ -9,16 +9,17 @@ class WritersController extends Controller
 {
     public function index()
     {
-        return view("writers.index",[
-            'writers'=> Writer::all()
-        ]);
+        return Writers::all();
     }
 
-   
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function create()
     {
-        //
-
+        
     }
 
     public function store(Request $request)

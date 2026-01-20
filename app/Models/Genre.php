@@ -16,6 +16,12 @@ class Genre extends Model
         'description'
     ];
 
+    protected $casts = [
+        'name' => 'string',
+        'description' => 'text',
+    ];
+
+
     public function books()
     {
         return $this->belongsToMany(Book::class, 'genre_books');
@@ -23,7 +29,7 @@ class Genre extends Model
 
     public function genreBooks()
     {
-        return $this->hasMany(Genre_Book::class, 'genre_id');
+        return $this->hasMany(GenreBook::class, 'genre_id');
     }
 
 

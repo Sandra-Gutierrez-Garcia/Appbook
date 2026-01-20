@@ -18,6 +18,13 @@ class Book extends Model
         'writer_id'
     ];
 
+    protected $casts = [
+        'description' => 'text',
+        'title' => 'string',
+        'published_at' => 'datetime',
+        'writer_id' => 'integer',
+    ];
+
     public function writer()
     {
         return $this->belongsTo(Writer::class, 'writer_id');

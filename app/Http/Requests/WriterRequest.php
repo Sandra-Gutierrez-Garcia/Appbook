@@ -6,34 +6,26 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class WriterRequest extends FormRequest
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     *
-     * @return bool
-     */
-    public function authorize()
+    public function authorize(): bool
     {
         return true;
     }
 
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array<string, mixed>
-     */
-    public function rules()
+    public function rules(): array
     {
-        return [
-            'username' => 'required|string|max:255',
-            'bio' => 'nullable|string',
-            'user_id' => 'required|exists:users,id'
-        ];
-    }
+        if ($this->isMethod('post')) {
+            return [
+                'username' => 'required|string|max:255|unique:writers,username',
+                'description' => 'required|text|max:1000',
+                'user_id' => 'required|exists:users,id',
+            ];
+        } elseif ($this->isMethod('put') || $this->isMethod('patch')) {
+            return [
+                'username' => 'required|string|max:255|unique:writers,username,' . $this->route('id'),
+                'description' => 'required|text|max:1000',
+            ];
+        }
 
-    public function messages(){
-        return[
-            'username.required'=>'the username is required',
-            'user_id.exists'=>'the user must exist'
-        ];
+        return [];
     }
 }
