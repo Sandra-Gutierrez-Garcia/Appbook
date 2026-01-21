@@ -13,14 +13,12 @@ class LikeBook extends Model
 
     protected $fillable = [
         'user_id',
-        'book_id',
-        'liked_at'
+        'book_id'
     ];
 
     protected $casts = [
         'user_id' => 'integer',
         'book_id' => 'integer',
-        'liked_at' => 'datetime',
     ];
 
     public function user()

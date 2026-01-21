@@ -14,20 +14,25 @@ class Book extends Model
     protected $fillable = [
         'title',
         'description',
-        'published_at',
+        'status',
         'writer_id'
     ];
 
     protected $casts = [
         'description' => 'text',
         'title' => 'string',
-        'published_at' => 'datetime',
+        'status' => 'string',
         'writer_id' => 'integer',
     ];
 
     public function writer()
     {
         return $this->belongsTo(Writer::class, 'writer_id');
+    }
+
+    public function chapters()
+    {
+        return $this->hasMany(Chapter::class, 'book_id');
     }
 
     public function genres()

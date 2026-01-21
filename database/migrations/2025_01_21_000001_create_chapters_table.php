@@ -13,13 +13,17 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('books', function (Blueprint $table) {
+        Schema::create('chapters', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('book_id')->constrained('books')->cascadeOnDelete();
             $table->string('title');
-            $table->text('description');
-            $table->foreignId('writer_id')->constrained('writers');
-            $table->enum('status', ['finished', 'starting', 'paused','abandoned'])->default('starting');
+            $table->integer('chapter_number');
+            $table->enum('content_type', ['text', 'pdf'])->default('text');
+            $table->longText('content')->nullable();
+            $table->string('pdf_path')->nullable();
             $table->timestamps();
+            $table->unique(['book_id', 'chapter_number']);
+
         });
     }
 
@@ -30,6 +34,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('books');
+        Schema::dropIfExists('chapters');
     }
 };

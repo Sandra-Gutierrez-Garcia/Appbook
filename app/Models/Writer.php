@@ -19,7 +19,7 @@ class Writer extends Model
 
     protected $casts = [
         'bio' => 'text',
-        'name' => 'string',
+        'username' => 'string',
     ];
 
     public function books()

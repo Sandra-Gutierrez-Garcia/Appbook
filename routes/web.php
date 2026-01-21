@@ -36,12 +36,12 @@ Route::middleware(['auth','role:reader'])->group(function () {
     Route::post('/users/{id}/delete', [UserController::class, 'destroy']);
     //create de writer profile
     Route::get('/writers/create', [WritersController::class, 'create']);
-    Route::post('/writers/store',[writersController::class, 'store']);
+    Route::post('/writers/store',[WritersController::class, 'store']);
 });
 //Route Writer
 Route::middleware(['auth', 'role:writer'])->group(function () {
     Route::get('/writers/{id}',[WritersController::class, 'show']);
-    Route::get('/wrieters/{id}/edit',[WritersController::class, 'edit']);
+    Route::get('/writers/{id}/edit',[WritersController::class, 'edit']);
     Route::post('/writers/{id}/update',[WritersController::class, 'update']);
     Route::post('/writers/{id}/delete',[WritersController::class, 'destroy']);
 
