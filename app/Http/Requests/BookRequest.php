@@ -24,9 +24,17 @@ class BookRequest extends FormRequest
         if ($this->isMethod('post')) {
             return [
                 'title' => 'required|string|max:255',
-                'id_writer' => 'required|exists:writers,id',
-                'published_date' => 'required|date',
-                'isbn' => 'required|string|max:13',
+                'writer_id' => 'required|exists:writers,id',
+                'description' => 'required|string',
+                'status' => 'required|in:finished,starting,paused,abandoned',
+            ];
+        }
+        
+        if ($this->isMethod('put')) {
+            return [
+                'title' => 'sometimes|string|max:255',
+                'description' => 'sometimes|string',
+                'status' => 'sometimes|in:finished,starting,paused,abandoned',
             ];
         }
 

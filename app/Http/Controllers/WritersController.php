@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Writer;
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Requests\WriterRequest;
 
@@ -10,7 +11,8 @@ class WritersController extends Controller
 {
     public function index()
     {
-
+        $writers = Writer::all();
+        return view('writers.index', compact('writers'));
     }
 
     public function create()
@@ -18,15 +20,16 @@ class WritersController extends Controller
         return view('writers.create');
     }
 
-    public function store(WriterRequest $request)
+    public function store(WriterRequest $request, User $idUser)
     {
         try {
-
-            $writer = Writer::create($request->validated());
-            return redirect("/writers/{$writer->id}")->with('success', 'Writer created successfully.');
+            $validated = $request->validated();
+            $validated['user_id'] = $idUser->id;
+            $writer = new Writer($validated);
+            $writer->save();
+            return redirect("/writers/{$writer->id}")->with('success', 'Writer profile created successfully.');
         } catch (\Exception $e) {
-            return redirect()->back()->withErrors(['error'
-             => 'Failed to create writer.']);
+            return redirect()->back()->withErrors(['error' => 'Failed to create writer profile.']);
         }
     }
 
@@ -69,17 +72,12 @@ class WritersController extends Controller
    
     public function destroy($id)
     {
-        if($writer = Writer::find($id)){
-            try{
-                $writer->delete();
-                return redirect('/writers')->with('success','writer deleted successfully');
-            } catch(\Exception $e){
-                return redirect()->back()->withErrors(['error'
-                => 'error deleting writer']);
-            }
-        } else {
-            return redirect()->back()->withErrors(['error' 
-            => 'Writer not found.']);
+        try {
+            $writer = Writer::findOrFail($id);
+            $writer->delete();
+            return redirect('/writers')->with('success', 'Writer deleted successfully.');
+        } catch (\Exception $e) {
+            return redirect()->back()->withErrors(['error' => 'Failed to delete writer.']);
         }
     }
 }

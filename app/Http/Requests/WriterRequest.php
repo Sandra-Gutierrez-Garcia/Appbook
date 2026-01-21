@@ -16,13 +16,13 @@ class WriterRequest extends FormRequest
         if ($this->isMethod('post')) {
             return [
                 'username' => 'required|string|max:255|unique:writers,username',
-                'description' => 'required|text|max:1000',
+                'bio' => 'required|string|max:1000',
                 'user_id' => 'required|exists:users,id',
             ];
-        } elseif ($this->isMethod('put') || $this->isMethod('patch')) {
+        } elseif ($this->isMethod('put')) {
             return [
                 'username' => 'required|string|max:255|unique:writers,username,' . $this->route('id'),
-                'description' => 'required|text|max:1000',
+                'bio' => 'sometimes|string|max:1000',
             ];
         }
 
