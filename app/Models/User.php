@@ -54,6 +54,11 @@ class User extends Authenticatable
         return $this->hasMany(LikeBook::class, 'user_id');
     }
 
+    public function writers()
+    {
+        return $this->hasMany(Writer::class, 'user_id');
+    }
+
     public function likedBooks()
     {
         return $this->belongsToMany(Book::class, 'like_books');

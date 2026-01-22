@@ -23,11 +23,9 @@ class WritersController extends Controller
     public function store(WriterRequest $request, User $idUser)
     {
         try {
-            $validated = $request->validated();
-            $validated['user_id'] = $idUser->id;
-            $writer = new Writer($validated);
-            $writer->save();
-            return redirect("/writers/{$writer->id}")->with('success', 'Writer profile created successfully.');
+            $Writer = new Writer($request->validated());
+            $idUser->writers()->save($Writer);
+            return redirect("/writers/{$Writer->id}")->with('success', 'Writer profile created successfully.');
         } catch (\Exception $e) {
             return redirect()->back()->withErrors(['error' => 'Failed to create writer profile.']);
         }
@@ -47,7 +45,7 @@ class WritersController extends Controller
     }
 
    
-    public function update(WriterRequest $request, $id)
+    public function update(WriterRequest $request, User $idUser, $id)
     {
         $writer = Writer::find($id);
         

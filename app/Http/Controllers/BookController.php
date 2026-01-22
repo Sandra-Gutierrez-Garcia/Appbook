@@ -32,11 +32,9 @@ class BookController extends Controller
     public function store(BookRequest $request, Writer $idWriter)
     {
         try {
-            $validated = $request->validated();
-            $validated['writer_id'] = $idWriter->id;
-            $book = new Book($validated);
-            $book->save();
-            return redirect("/books/{$book->id}")->with('success', 'Book created successfully.');
+            $newBook = new Book($request->validated());
+            $idWriter->books()->save($newBook);
+            return redirect("/books/{$newBook->id}")->with('success', 'Book created successfully.');
         } catch (\Exception $e) {
             return redirect()->back()->withErrors(['error' => 'Failed to create book.']);
         }
