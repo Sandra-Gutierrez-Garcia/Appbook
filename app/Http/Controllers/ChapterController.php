@@ -47,23 +47,36 @@ class ChapterController extends Controller
     public function show(Chapter $chapter)
     {
         //
+        $chapter = Chapter::findOrFail($chapter->id);
+        return view('chapters.show', compact('chapter'));
     }
 
    
     public function edit(Chapter $chapter)
     {
-        //
+        return view('chapters.edit', compact('chapter'));
     }
 
    
-    public function update(Request $request, Chapter $chapter)
+    public function update(ChapterRequest $request, Chapter $chapter)
     {
-        //
+        
+        try {
+            $chapter->update($request->validated());
+            return redirect("/chapters/{$chapter->id}")->with('success', 'Chapter updated successfully.');
+        } catch (\Exception $e) {
+            return redirect()->back()->withErrors(['error' => 'Failed to update chapter.']);
+        }
     }
 
    
     public function destroy(Chapter $chapter)
     {
-        //
+        try {
+            $chapter->delete();
+            return redirect('/books')->with('success', 'Chapter deleted successfully.');
+        } catch (\Exception $e) {
+            return redirect()->back()->withErrors(['error' => 'Failed to delete chapter.']);   
+        }
     }
 }
