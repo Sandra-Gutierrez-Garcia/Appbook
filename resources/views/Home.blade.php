@@ -39,6 +39,13 @@
 
         </div>
      </div>
+
+     <!-- books -->
+        <h2 class="text-xl font-semibold text-center text-gray-700 mb-8 uppercase tracking-wide">Books Fantasy</h2>
+
+      <x-libery-book 
+        :books="$books"
+        />
         
 </body>
 </html>

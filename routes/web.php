@@ -4,6 +4,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WritersController;
+use App\Http\Controllers\BookController;
+use App\Http\Controllers\HomeController;
+ 
 
 /*
 |--------------------------------------------------------------------------
@@ -16,9 +19,8 @@ use App\Http\Controllers\WritersController;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
+Route::get('/', [HomeController::class, 'index'])->name('home');
+
 //route create user and login
 Route::get('/register', [AuthController::class, 'create']);
 Route::post('/register', [AuthController::class, 'store']);
