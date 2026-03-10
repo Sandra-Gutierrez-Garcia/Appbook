@@ -32,7 +32,7 @@
                 <div class="w-40 h-56 bg-violet-200 rounded-lg shadow-lg flex items-center justify-center">
                 </div>
                 <span class="mt-2 text-gray-600">Book Title</span>
-                <span class="text-gray-500 text-sm">description book</span>
+                <span class="text-gray-500 text-sm">Book description</span>
                 <span class="text-gray-500 text-sm">Author Name</span>
                 <a href="#" class="text-violet-600 hover:underline">Read More</a>
             </div>
@@ -41,9 +41,9 @@
      </div>
 
      <!-- books -->
-        <h2 class="text-xl font-semibold text-center text-gray-700 mb-8 uppercase tracking-wide">Books Fantasy</h2>
+                <h2 class="text-xl font-semibold text-center text-gray-700 mb-8 uppercase tracking-wide">Fantasy Books</h2>
 
-      <x-libery-book 
+            <x-library-book 
         :books="$books"
         />
         

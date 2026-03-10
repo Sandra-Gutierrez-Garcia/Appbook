@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class liberyBook extends Component
+class LibraryBook extends Component
 {
     /**
      * Create a new component instance.
@@ -20,6 +20,6 @@ class liberyBook extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.libery-book');
+        return view('components.library-book');
     }
 }

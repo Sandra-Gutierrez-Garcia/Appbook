@@ -11,6 +11,6 @@
         :appName="'AppBook'"
         />
         <!-- section for writers -->
-        <x-libery-writer-blade />
+        <x-library-writer-blade />
 </body>
 </html>

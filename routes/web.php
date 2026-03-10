@@ -36,7 +36,7 @@ Route::middleware(['auth','role:reader'])->group(function () {
     Route::get('/users/{id}/edit', [UserController::class, 'edit']);
     Route::post('/users/{id}/update', [UserController::class, 'update']);
     Route::post('/users/{id}/delete', [UserController::class, 'destroy']);
-    //create de writer profile
+    // Create writer profile
     Route::get('/writers/create', [WritersController::class, 'create']);
     Route::post('/writers/store',[WritersController::class, 'store']);
 });
