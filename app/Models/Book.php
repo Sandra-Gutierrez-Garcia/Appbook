@@ -19,7 +19,7 @@ class Book extends Model
     ];
 
     protected $casts = [
-        'description' => 'text',
+        'description' => 'string',
         'title' => 'string',
         'status' => 'string',
         'writer_id' => 'integer',

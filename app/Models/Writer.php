@@ -18,7 +18,7 @@ class Writer extends Model
     ];
 
     protected $casts = [
-        'bio' => 'text',
+        'bio' => 'string',
         'username' => 'string',
     ];
 

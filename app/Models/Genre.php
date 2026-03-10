@@ -18,7 +18,7 @@ class Genre extends Model
 
     protected $casts = [
         'name' => 'string',
-        'description' => 'text',
+        'description' => 'string',
     ];
 
 
