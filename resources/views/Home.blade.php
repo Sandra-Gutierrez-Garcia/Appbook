@@ -40,12 +40,10 @@
         </div>
      </div>
 
-     <!-- books -->
-                <h2 class="text-xl font-semibold text-center text-gray-700 mb-8 uppercase tracking-wide">Fantasy Books</h2>
-
-            <x-library-book 
-        :books="$books"
-        />
+    <!-- books -->
+    <h2 class="mb-8 text-center text-xl font-semibold uppercase tracking-wide text-gray-700">Fantasy Books</h2>
+    <x-book-genres-component :books="$bookGenresFantasy" />
+            
         
 </body>
 </html>

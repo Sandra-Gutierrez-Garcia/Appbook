@@ -10,9 +10,18 @@ class HomeController extends Controller
 {
     public function index(): View
     {
-        $books= book::all();
+        $books = Book::all();
         $writers = Writer::all();
-        return view('Home', compact('books','writers'));
+        $bookGenresFantasy = $this->showBooksByGenreFantasy();
         
+
+        return view('Home', compact('books', 'writers','bookGenresFantasy'));
+    }
+
+    private function showBooksByGenreFantasy()
+    {
+        return Book::with('writer')
+            ->whereRelation('genres', 'name', 'Fantasy')
+            ->get();
     }
 }

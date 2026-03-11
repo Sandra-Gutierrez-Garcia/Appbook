@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Models\Writer;
+use App\Models\Book;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -19,7 +21,7 @@ class BookFactory extends Factory
         return [
             'title' => $this->faker->sentence(),
             'description' => $this->faker->paragraph(),
-            'published_at' => $this->faker->date(),
+            'status' => $this->faker->randomElement(['finished', 'starting', 'paused', 'abandoned']),
             'writer_id' => Writer::factory(),
         ];
     }
