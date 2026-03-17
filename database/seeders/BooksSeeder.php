@@ -9,22 +9,22 @@ use App\Models\Writer;
 
 class BooksSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
+     
     public function run(): void
     {
-        // frist we need to get the writers and genres to associate with the books
-        $writers = Writer::all();
-        $genres = Genre::all();
+        $this->createBooksFanstasy();
 
-        // create 10 books diferent with random data
-        for ($i = 0; $i < 10; $i++) {
-            $book = Book::factory()->create([
-                'writer_id' => $writers->random()->id,
+    }
+    
+    public function createBooksFanstasy(){
+
+        $gnereFanstasy = Genre::where('name', 'Fantasy')->first();
+
+        for ($i=0; $i <10; $i++) {
+            $bookFantasy = Book::factory()->create([
+                'writer_id' => Writer::factory()->create()->id,
             ]);
-            $book->genres()->attach($genres->random()->id);
+            $bookFantasy->genres()->attach($gnereFanstasy->id);
         }
-
     }
 }

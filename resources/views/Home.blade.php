@@ -41,8 +41,12 @@
      </div>
 
     <!-- books -->
-    <h2 class="mb-8 text-center text-xl font-semibold uppercase tracking-wide text-gray-700">Fantasy Books</h2>
+    <h2 class="mx-auto mb-8 w-full max-w-7xl border-t border-gray-300 px-4 pt-8 text-left text-xl font-semibold uppercase tracking-wide text-gray-700">Fantasy Books</h2>
     <x-book-genres-component :books="$bookGenresFantasy" />
+
+
+    <h2 class="mx-auto mb-8 mt-12 w-full max-w-7xl border-t border-gray-300 px-4 pt-8 text-left text-xl font-semibold uppercase tracking-wide text-gray-700">Romance Books</h2>
+    <x-book-genres-component :books="$bookGenresRomance" />
             
         
 </body>
