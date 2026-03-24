@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use App\Models\User;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Writer>
@@ -17,8 +18,9 @@ class WriterFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker->name(),
+            'username' => $this->faker->unique()->userName(),
             'bio' => $this->faker->paragraph(),
+            'user_id' => User::factory(),
         ];
     }
 }

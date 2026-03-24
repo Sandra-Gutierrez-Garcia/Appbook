@@ -13,21 +13,14 @@ class BooksSeeder extends Seeder
      */
     public function run(): void
     {
-        $writers = Writer::query()->pluck('id');
+        $this->BookPopulate();
+    }
+    
+    public function BookPopulate(){
+        $writer =Writer::factory()->count(5)->create();
+        $bookpopulate = Book::factory()->count(10)->create([
+            'writer_id' => $writer->random()->id,
+        ]);
 
-        if ($writers->isEmpty()) {
-            return;
-        }
-
-        $statuses = ['finished', 'starting', 'paused', 'abandoned'];
-
-        for ($i = 0; $i < 10; $i++) {
-            Book::create([
-                'title' => fake()->sentence(4),
-                'description' => fake()->paragraph(),
-                'status' => fake()->randomElement($statuses),
-                'writer_id' => $writers->random(),
-            ]);
-        }
     }
 }

@@ -6,13 +6,14 @@ use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class LibraryBook extends Component
+class BookCart extends Component
 {
     /**
      * Create a new component instance.
      */
-    public function __construct(public iterable $books)
+    public function __construct( public $book)
     {
+        //
     }
 
     /**
@@ -20,6 +21,6 @@ class LibraryBook extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.library-book');
+        return view('components.book-cart');
     }
 }

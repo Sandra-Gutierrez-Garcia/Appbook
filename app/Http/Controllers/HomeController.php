@@ -10,9 +10,13 @@ class HomeController extends Controller
 {
     public function index(): View
     {
-        $books= book::all();
-        $writers = Writer::all();
-        return view('Home', compact('books','writers'));
+        $bookpopulate = $this->Bookpopulate();
+        return view('home', compact('bookpopulate'));
         
+    }
+    public function Bookpopulate(){
+        return Book::with('writer')
+        ->limit(10)
+        ->get();
     }
 }

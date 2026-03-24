@@ -13,12 +13,10 @@ class Genre extends Model
 
     protected $fillable = [
         'name',
-        'description'
     ];
 
     protected $casts = [
         'name' => 'string',
-        'description' => 'string',
     ];
 
 

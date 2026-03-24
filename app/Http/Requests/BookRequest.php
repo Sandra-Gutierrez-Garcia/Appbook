@@ -23,7 +23,7 @@ class BookRequest extends FormRequest
     {
         if ($this->isMethod('post')) {
             return [
-                'title' => 'required|string|max:255',
+                'title' => 'required|string|max:15',
                 'writer_id' => 'required|exists:writers,id',
                 'description' => 'required|string',
                 'status' => 'required|in:finished,starting,paused,abandoned',
@@ -32,7 +32,7 @@ class BookRequest extends FormRequest
         
         if ($this->isMethod('put')) {
             return [
-                'title' => 'sometimes|string|max:255',
+                'title' => 'sometimes|string|max:15',
                 'description' => 'sometimes|string',
                 'status' => 'sometimes|in:finished,starting,paused,abandoned',
             ];

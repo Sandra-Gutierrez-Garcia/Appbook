@@ -15,8 +15,8 @@ class DatabaseSeeder extends Seeder
             RolesSeeder::class,
             TestUserSeeder::class,
             WriterSeeder::class,
-            GenresSeeder::class,
             BooksSeeder::class,
+            GenresSeeder::class,
         ]);
     }
 }
