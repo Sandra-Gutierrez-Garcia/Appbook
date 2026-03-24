@@ -11,7 +11,8 @@ class HomeController extends Controller
     public function index(): View
     {
         $bookpopulate = $this->Bookpopulate();
-        return view('home', compact('bookpopulate'));
+        $bookRomance = $this->BookRomance();
+        return view('home', compact('bookpopulate', 'bookRomance'));
         
     }
     public function Bookpopulate(){
@@ -19,4 +20,15 @@ class HomeController extends Controller
         ->limit(10)
         ->get();
     }
+
+    public function BookRomance(){
+        return Book::with('writer')
+        ->whereHas('genres', function($query){
+            $query->where('name', 'Romance');
+        })
+        ->limit(5)
+        ->get();
+    }
+
+    
 }
