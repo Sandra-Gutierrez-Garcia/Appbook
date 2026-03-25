@@ -16,6 +16,7 @@ class BooksSeeder extends Seeder
     {
         $this->BookPopulate();
         $this->BookRomance();
+        $this->BookAction();
     }
     
     public function BookPopulate(){
@@ -36,6 +37,20 @@ class BooksSeeder extends Seeder
             ]);
             // attach romance genre to book
             $book->genres()->attach($romance->id);
+        }
+
+    }
+     public function BookAction(){
+        $writer =Writer::factory()->count(5)->create();
+        // create action genre
+        $action = Genre::factory()->create(['name' => 'Action']);
+        
+        for ($i = 0; $i < 5; $i++) {
+            $book = Book::factory()->create([
+                'writer_id' => $writer->random()->id,
+            ]);
+            // attach action genre to book
+            $book->genres()->attach($action->id);
         }
 
     }

@@ -23,6 +23,7 @@ class GenresSeeder extends Seeder
             'Contemporary',
             'Historical Fiction',
             'Horror',
+            'Action'
         ];
 
         foreach ($genres as $genreName) {

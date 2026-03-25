@@ -12,22 +12,32 @@ class HomeController extends Controller
     {
         $bookpopulate = $this->Bookpopulate();
         $bookRomance = $this->BookRomance();
-        return view('home', compact('bookpopulate', 'bookRomance'));
+        $bookAction = $this->BookAction();
+        return view('home', compact('bookpopulate', 'bookRomance', 'bookAction'));
         
     }
     public function Bookpopulate(){
         return Book::with('writer')
-        ->limit(10)
-        ->get();
+                    ->limit(10)
+                    ->get();
     }
 
     public function BookRomance(){
         return Book::with('writer')
-        ->whereHas('genres', function($query){
-            $query->where('name', 'Romance');
-        })
-        ->limit(5)
-        ->get();
+            ->whereHas('genres', function($query){
+                $query->where('name', 'Romance');
+            })
+                ->limit(5)
+                ->get();
+    }
+    public function BookAction(){
+        return Book::with('writer')
+            ->whereHas('genres', function ($query){
+                $query->where('name', 'Action');
+            })
+                ->limit(5)
+                ->get();
+        
     }
 
     

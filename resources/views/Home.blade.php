@@ -44,5 +44,15 @@
             @endforeach
         </div>
     </div>
+    
+    <!-- book action -->
+    <div class="container mx-auto mt-12 px-4 border-t border-gray-300 pt-6">
+        <h2 class="mx-auto text-2xl font-bold text-gray-700 uppercase">Popular Action</h2>
+        <div class="mt-6 flex flex-wrap gap-6 justify-center">
+            @foreach($bookAction as $book)
+                    <x-book-cart :book="$book" />
+            @endforeach
+        </div>
+    </div>
 </body>
 </html>
