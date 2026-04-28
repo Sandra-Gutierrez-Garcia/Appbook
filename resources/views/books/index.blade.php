@@ -15,6 +15,15 @@
             <div class="text-center border-b border-gray-300 pb-2">
                 <h2 class="text-lg font-semibold text-gray-700">Categories</h2>
             </div>
+            <form action="/books" method="GET">
+                @foreach($genres as $genre)
+                <label for="genre-{{ $genre->id }}">
+                    <input type="checkbox" name="genre[]" value="{{ $genre->id }}" id="genre-{{ $genre->id }}" @checked(in_array($genre->id, request()->input('genre', [])))>
+                    {{ $genre->name }}
+                </label>
+                @endforeach
+                <button type="submit" class="mt-2 px-4 py-2 bg-purple-500 text-white rounded">Filter</button>
+            </form>
         </aside>
 
         <main class="mt-0 flex-1">

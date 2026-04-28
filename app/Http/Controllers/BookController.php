@@ -15,14 +15,29 @@ class BookController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        $genres = Genre::all();
+        $selectedGenres = array_filter((array) $request->input('genre', []));
+        
+        if (!empty($selectedGenres)) {
+            $books = $this->filterByGenres($selectedGenres);
+            return view('books.index', compact('books', 'genres'));
+        }
+
         $books = Book::all();
-        $Gneres = Genre::all();
-        return view('books.index', compact('books', 'Gneres'));
+        return view('books.index', compact('books', 'genres'));
+    
 
     }
 
+    public function filterByGenres(array $genreIds = [])
+    {
+        return Book::whereHas('genres', function ($query) use ($genreIds) {
+            $query->whereIn('genres.id', $genreIds);
+        }, '>=', count($genreIds))->get();
+    }
+    
   
     public function create()
     {
