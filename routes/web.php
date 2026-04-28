@@ -27,6 +27,8 @@ Route::post('/register', [AuthController::class, 'store']);
 Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
 Route::post('/login', [AuthController::class, 'login']);
 
+//route index books
+Route::get('/books', [BookController::class, 'index']);
 //route index writers
 Route::get('/writers', [WritersController::class, 'index']);
 
@@ -36,7 +38,7 @@ Route::middleware(['auth','role:reader'])->group(function () {
     Route::get('/users/{id}/edit', [UserController::class, 'edit']);
     Route::post('/users/{id}/update', [UserController::class, 'update']);
     Route::post('/users/{id}/delete', [UserController::class, 'destroy']);
-    // Create writer profile
+// Create writer profile
     Route::get('/writers/create', [WritersController::class, 'create']);
     Route::post('/writers/store',[WritersController::class, 'store']);
 });
