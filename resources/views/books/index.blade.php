@@ -15,13 +15,25 @@
             <div class="text-center border-b border-gray-300 pb-2">
                 <h2 class="text-lg font-semibold text-gray-700">Categories</h2>
             </div>
+            
             <form action="/books" method="GET">
+                <div class="mt-4">
                 @foreach($genres as $genre)
-                <label for="genre-{{ $genre->id }}">
+                <label for="genre-{{ $genre->id }}" class="flex items-center gap-2 text-gray-600">
                     <input type="checkbox" name="genre[]" value="{{ $genre->id }}" id="genre-{{ $genre->id }}" @checked(in_array($genre->id, request()->input('genre', [])))>
                     {{ $genre->name }}
                 </label>
                 @endforeach
+                </div>
+                <div class="mt-4">
+                    @foreach($status as $statusitem)
+                    <label for="status-{{ $statusitem }}" class="flex items-center gap-2 text-gray-600">
+                        <input type="radio" name="status" value="{{ $statusitem }}" id="status-{{ $statusitem }}" @checked(request()->input('status') === $statusitem)>
+                            {{ $statusitem }}
+                    </label>
+                    @endforeach
+                </div>
+
                 <button type="submit" class="mt-2 px-4 py-2 bg-purple-500 text-white rounded">Filter</button>
             </form>
         </aside>

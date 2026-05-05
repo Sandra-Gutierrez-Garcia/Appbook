@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('title');
             $table->text('description');
             $table->foreignId('writer_id')->constrained('writers');
-            $table->enum('status', ['finished', 'starting', 'paused','abandoned'])->default('starting');
+            $table->enum('status', ['finished', 'completed', 'in_progress', 'paused','abandoned'])->default('in_progress');
             $table->timestamps();
         });
     }
