@@ -29,8 +29,8 @@
                     <h1 class="flex items-center justify-center text-lg font-semibold text-gray-700 mb-2 border-b border-gray-400">Status</h1>
                     @foreach($status as $statusitem)
                     <label for="status-{{ $statusitem }}" class="flex items-center gap-2 text-gray-600"> 
-                        <input type="checkbox" name="status[]" value="{{ $statusitem }}" id="status-{{ $statusitem }}" @checked(in_array($statusitem, request()->input('status', [])))>
-                            {{ $statusitem }}
+                        <input type="radio" name="status" value="{{ $statusitem }}" id="status-{{ $statusitem ?? 'all' }}" @checked(request()->input('status', 'All') === $statusitem)>
+                            {{ $statusitem ==='all' ? 'All' : $statusitem }}
                     </label>
                     @endforeach
                 </div>
