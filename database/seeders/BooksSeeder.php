@@ -29,7 +29,7 @@ class BooksSeeder extends Seeder
     public function BookRomance(){
         $writer =Writer::factory()->count(5)->create();
         // create romance genre
-        $romance = Genre::factory()->create(['name' => 'Romance']);
+        $romance = Genre::firstOrCreate(['name' => 'Romance']);
         
         for ($i = 0; $i < 5; $i++) {
             $book = Book::factory()->create([
@@ -43,7 +43,7 @@ class BooksSeeder extends Seeder
      public function BookAction(){
         $writer =Writer::factory()->count(5)->create();
         // create action genre
-        $action = Genre::factory()->create(['name' => 'Action']);
+        $action = Genre::firstOrCreate(['name' => 'Action']);
         
         for ($i = 0; $i < 5; $i++) {
             $book = Book::factory()->create([

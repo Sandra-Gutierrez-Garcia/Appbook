@@ -1,132 +1,57 @@
-# ✈️ SkyImpact: Air Quality & Flight Impact Visualizer
+# Appbook
 
-## 📄 Description
-SkyImpact is a web application designed to visualize the estimated impact of air traffic on air quality and public health.
+ES: Appbook es una app web hecha con Laravel para leer libros, ver escritores y gestionar usuarios con roles de lector y escritor.
 
-Although the original goal was to build a fully interactive system that calculates pollution levels based on customizable parameters (monthly flight volume, route types, fuel consumption, etc.), this version focuses on two main visual components:
+EN: Appbook is a Laravel web app to read books, explore writers, and manage users with reader and writer roles.
 
-- 🌍 A map of Spanish airports showing detailed gas emission information
-- 🛫 A flight map displaying departures and arrivals between selected airports
 
-The project integrates an Angular 20 frontend with a Laravel 12 backend API, both running on a local environment due to deployment limitations.
+## Technologies / Tecnologías
 
-## 🛠️ Tech Stack
+- Laravel 11
+- PHP 8.2+
+- MySQL
+- Vite
+- Tailwind CSS
 
-### Frontend
-- **Angular 20** - Frontend framework
-- **Mapbox** & **Globe gl** for map visualization
-- **Angular Material** for UI styling
+## Funciones principales /Main features
 
-### Backend
-- **Laravel 12** (PHP)
-- **REST API** endpoints connecting to flight and emission data
-- **Composer** for dependency management
+- Registro e inicio de sesión / Sign up and login
+- Perfil de usuario / User profile
+- Perfil de escritor / Writer profile
+- Portada con libros destacados / Home page with featured books
+- Libros por género / Books by genre
+- Sistema de roles y permisos / Roles and permissions system
 
-### Environment
-Localhost setup with Node.js, npm, and PHP installed
+## Instalación / Installation
 
-## 📋 Requirements
-To run the project locally, make sure you have:
-
-- **Node.js** and **npm** installed → [https://nodejs.org](https://nodejs.org)
-- **PHP** (≥8.2) and **Composer** installed → [https://getcomposer.org](https://getcomposer.org)
-- **Angular CLI** globally installed:
-  ```bash
-  npm install -g @angular/cli
- ```
-
-## 🛠️ Installation
-
-✔️ Step-by-step setup
-1️⃣ Clone the repository
-
-```bash
-git clone https://github.com/Sandra-Gutierrez-Garcia/hackaton_backend_equipo5.git
-```
-
-2️⃣ Navigate into the project folder
-
-3️⃣ Install Angular dependencies
-
-```bash
-cd SkyImpact-front
-```
-```bash
-npm install
-```
-
-4️⃣ Install Laravel dependencies
-```bash
-cd ..laravel
-```
 ```bash
 composer install
-```
-
-
-### ⚙️ Environment Configuration
-
-# 🔧 Frontend (Angular)
-
-1️⃣ Rename the example environment file:
-
-mv src/environments/environment.example.ts src/environments/environment.ts
-
-
-2️⃣ Edit the file to include your local API endpoint:
-```bash
-// src/environments/environment.ts
-export const environment = {
-  production: false,
-  apiUrl: 'http://localhost:8000/api'
-};
-```
-
-# 🔧 Backend (Laravel)
-
-1️⃣ Copy the environment template:
-
-```bash
-cp .env.example .env
-```
-
-
-2️⃣ Generate a Laravel app key:
-```bash
+npm install
+copy .env.example .env
 php artisan key:generate
+php artisan migrate --seed
 ```
 
-3️⃣ Update .env with your local configuration (database, ports, etc.)
+ES: Configura antes tu base de datos en `.env`.
 
-## ▶️ Running the Application
+EN: Configure your database in `.env` first.
 
-🖥️ Run the Laravel API
+## Ejecutar el proyecto / Run the project
 
-From the backend directory:
+ En una terminal / In one terminal:
+
 ```bash
 php artisan serve
 ```
+En otra terminal / In another terminal:
 
-Your backend will run on http://localhost:8000
-
-🌐 Run the Angular frontend
-
-From the frontend directory:
 ```bash
-ng serve
+npm run dev
 ```
 
-Open your browser at http://localhost:4200
+## Usuario de prueba / Test user
 
-The Angular app will fetch data from your local Laravel API.
+- Email: `test@appbook.com`
+- Password: `Test@1234`
 
-## ✨ Summary
 
-**Main Focus:** Interactive visualization of flight emissions and air routes
-
-**Region Covered:** Spain
-
-**Environment:** Local (not deployed yet)
-
-## 📚 Authors
-Developed by junior front end developers team as part of **Hackató Saló de l’Ocupació** focusing on team programming between front and back.

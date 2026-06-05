@@ -21,6 +21,7 @@ class BookFactory extends Factory
             'title' => $this->faker->sentence(),
             'description' => $this->faker->paragraph(),
             'writer_id' => Writer::factory(),
+            'status' => $this->faker->randomElement(['finished', 'completed', 'in_progress', 'paused', 'abandoned']),
         ];
     }
 }

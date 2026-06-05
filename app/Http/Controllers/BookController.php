@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Book;
 use App\Models\Writer;
+use App\Models\Genre;
 use Illuminate\Http\Request;
 use App\Http\Requests\BookRequest;
 
@@ -14,13 +15,37 @@ class BookController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $books = Book::all();
-        return view('books.index', compact('books'));
+        $genres = Genre::all();
+        $status = ['finished', 'completed', 'in_progress', 'paused', 'abandoned', 'All'];
+        
+        // Get selected genres and status from the request
+        $selectedGenres = array_filter((array) $request->input('genre', []));
+        $selectedStatus = $request->input('status', 'All');
+        $books = $this->filter($selectedGenres)->get();
 
+        return view('books.index', compact('books', 'genres', 'status', 'selectedGenres', 'selectedStatus'));
     }
 
+    public function filter(array $genreIds = [])
+    {
+        $query = Book::query();
+
+        //Filter for genres the books
+        $query = Book::whereHas('genres', function ($query) use ($genreIds) {
+            $query->whereIn('genres.id', $genreIds);
+        }, '>=', count($genreIds));
+
+        // Apply status filter if provided
+        if (request()->has('status') && request()->input('status') !== 'All') {
+            $query->where('status', request()->input('status'));
+        }
+
+        return $query;
+    }
+    
+   
   
     public function create()
     {
