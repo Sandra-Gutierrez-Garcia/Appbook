@@ -13,11 +13,21 @@
                 <span class="text-2xl font-light tracking-wide text-gray-700">{{ $appName }}</span>
             </div>
 
-            <!-- register and login -->
+            @auth
+            <!-- User profile and logout -->
+            <div class="flex items-center space-x-4">
+                <span class="text-gray-700"><a href="/users/{{ auth()->user()->id }}">{{ auth()->user()->name }}</a></span>
+                <form action="{{ route('logout') }}" method="POST">
+                    @csrf
+                    <button type="submit" class="text-black hover:text-violet-600">Logout</button>
+                </form>
+            </div>
+            @else
             <div class="flex items-center space-x-4">
                 <a href="/login" class="text-black hover:text-violet-600">Login</a>
                 <a href="/register" class="text-black hover:text-violet-600">Register</a>
             </div>
+            @endauth
         </div>
     </nav>
 </div>
