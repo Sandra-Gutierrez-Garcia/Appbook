@@ -16,7 +16,7 @@
             @auth
             <!-- User profile and logout -->
             <div class="flex items-center space-x-4">
-                <span class="text-gray-700">Hello, {{ auth()->user()->name }}</span>
+                <span class="text-gray-700"><a href="/users/{{ auth()->user()->id }}">{{ auth()->user()->name }}</a></span>
                 <form action="{{ route('logout') }}" method="POST">
                     @csrf
                     <button type="submit" class="text-black hover:text-violet-600">Logout</button>
