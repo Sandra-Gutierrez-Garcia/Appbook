@@ -19,31 +19,30 @@ class BookController extends Controller
     {
         $genres = Genre::all();
         $status = ['finished', 'completed', 'in_progress', 'paused', 'abandoned', 'All'];
-
-        $selectedGenres = array_filter((array) $request->input('genre', []));
         
-        if (!empty($selectedGenres)) {
-            $books = $this->filter($selectedGenres);
-            return view('books.index', compact('books', 'genres', 'status'));
-        }
+        // Get selected genres and status from the request
+        $selectedGenres = array_filter((array) $request->input('genre', []));
+        $selectedStatus = $request->input('status', 'All');
+        $books = $this->filter($selectedGenres)->get();
 
-        $books = Book::all();
-        return view('books.index', compact('books', 'genres', 'status'));
-    
-
+        return view('books.index', compact('books', 'genres', 'status', 'selectedGenres', 'selectedStatus'));
     }
 
     public function filter(array $genreIds = [])
     {
+        $query = Book::query();
+
+        //Filter for genres the books
         $query = Book::whereHas('genres', function ($query) use ($genreIds) {
             $query->whereIn('genres.id', $genreIds);
         }, '>=', count($genreIds));
 
+        // Apply status filter if provided
         if (request()->has('status') && request()->input('status') !== 'All') {
             $query->where('status', request()->input('status'));
         }
 
-        return $query->get();
+        return $query;
     }
     
    

@@ -30,6 +30,7 @@ class HomeController extends Controller
                 ->limit(5)
                 ->get();
     }
+    
     public function BookAction(){
         return Book::with('writer')
             ->whereHas('genres', function ($query){

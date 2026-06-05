@@ -26,15 +26,17 @@
                 @endforeach
                 </div>
                 <div class="mt-4">
+                    <h1 class="flex items-center justify-center text-lg font-semibold text-gray-700 mb-2 border-b border-gray-400">Status</h1>
                     @foreach($status as $statusitem)
-                    <label for="status-{{ $statusitem }}" class="flex items-center gap-2 text-gray-600">
-                        <input type="radio" name="status" value="{{ $statusitem }}" id="status-{{ $statusitem }}" @checked(request()->input('status') === $statusitem)>
+                    <label for="status-{{ $statusitem }}" class="flex items-center gap-2 text-gray-600"> 
+                        <input type="checkbox" name="status[]" value="{{ $statusitem }}" id="status-{{ $statusitem }}" @checked(in_array($statusitem, request()->input('status', [])))>
                             {{ $statusitem }}
                     </label>
                     @endforeach
                 </div>
 
                 <button type="submit" class="mt-2 px-4 py-2 bg-purple-500 text-white rounded">Filter</button>
+                <a href="{{ route('books.index') }}" class="mt-2 px-4 py-2 bg-gray-500 text-white rounded inline-block">Reset</a>
             </form>
         </aside>
 

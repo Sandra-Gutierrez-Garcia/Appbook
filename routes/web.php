@@ -28,7 +28,7 @@ Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
 Route::post('/login', [AuthController::class, 'login']);
 
 //route index books
-Route::get('/books', [BookController::class, 'index']);
+Route::get('/books', [BookController::class, 'index'])->name('books.index');
 //route index writers
 Route::get('/writers', [WritersController::class, 'index']);
 
